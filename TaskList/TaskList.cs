@@ -31,6 +31,10 @@ namespace TaskList
                 if(task._taskName == input)
                 {
                     Tasks.Remove(task);
+                    if (fullList.Contains(task))
+                    {
+                        fullList.Remove(task);
+                    }
                     break;
                 }
             }    
@@ -99,12 +103,26 @@ namespace TaskList
             switch (input)
             {
                 case 1:
-                    fullList = Tasks;
+                    foreach(Task task in Tasks)
+                    {
+                        if (!fullList.Contains(task))
+                        {
+                            fullList.Add(task);
+                        }
+                    }
+                    Tasks = fullList;
                     tempList = Tasks.Where(Task => Task._date.CompareTo(DateTime.Now) <= 0).ToList();
                     Tasks = tempList;
                     break;
                 case 2:
-                    fullList = Tasks;
+                    foreach (Task task in Tasks)
+                    {
+                        if (!fullList.Contains(task))
+                        {
+                            fullList.Add(task);
+                        }
+                    }
+                    Tasks = fullList;
                     tempList = Tasks.Where(Task => Task._date.CompareTo(DateTime.Now) >= 0).ToList();
                     Tasks = tempList;
                     break;

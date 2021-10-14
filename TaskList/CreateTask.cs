@@ -7,9 +7,9 @@ using System.IO;
 using System.Text.Json;
 namespace TaskList
 {
-    class InsertTask
+    class CreateTask
     {
-        public Task Insert()
+        public Task Create()
         {
             string taskName;
             int priority;

@@ -23,7 +23,7 @@ namespace TaskList
             taskList.AppendTask(task6);
             taskList.AppendTask(task7);
 
-            InsertTask insertTask = new InsertTask();
+            CreateTask createTask = new CreateTask();
             int input;
             do
             {
@@ -41,7 +41,7 @@ namespace TaskList
                 switch (input)
                 {
                     case 1:
-                        taskList.AppendTask(insertTask.Insert());
+                        taskList.AppendTask(createTask.Create());
                         break;
                     case 2:
                         taskList.UpdateTask();

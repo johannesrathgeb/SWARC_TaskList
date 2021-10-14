@@ -9,8 +9,8 @@ namespace TaskList
     class Task
     {
         public string _taskName;
-        int _priority;
-        DateTime _date;
+        public int _priority;
+        public DateTime _date;
 
         public Task(string taskName, int priority, DateTime date)
         {

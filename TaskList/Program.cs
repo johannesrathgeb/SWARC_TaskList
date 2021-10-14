@@ -14,12 +14,14 @@ namespace TaskList
             Task task4 = new Task("AWS", 5, "22/10/2021");
             Task task5 = new Task("Zocken", 4, "23/11/2021");
             Task task6 = new Task("Leben", 3, "19/07/2027");
+            Task task7 = new Task("Sterben", 3, "19/07/2007");
             taskList.AppendTask(task1);
             taskList.AppendTask(task2);
             taskList.AppendTask(task3);
             taskList.AppendTask(task4);
             taskList.AppendTask(task5);
             taskList.AppendTask(task6);
+            taskList.AppendTask(task7);
 
             InsertTask insertTask = new InsertTask();
             int input;
@@ -32,8 +34,9 @@ namespace TaskList
                 Console.WriteLine("1.) Add Task");
                 Console.WriteLine("2.) Update Task");
                 Console.WriteLine("3.) Delete Task");
-                Console.WriteLine("4.) Filter");
-                Console.WriteLine("5.) Exit");
+                Console.WriteLine("4.) Sort");
+                Console.WriteLine("5.) Filter");
+                Console.WriteLine("6.) Exit");
                 input = int.Parse(Console.ReadLine());
                 switch (input)
                 {
@@ -47,12 +50,15 @@ namespace TaskList
                         taskList.DeleteTask();
                         break;
                     case 4:
-
+                        taskList.sortList();
+                        break;
+                    case 5:
+                        taskList.filterList();
                         break;
                     default:
                         break;
                 }
-            } while (input != 5);
+            } while (input != 6);
             
             
                 

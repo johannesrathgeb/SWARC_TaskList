@@ -9,7 +9,8 @@ namespace TaskList
     class TaskList
     {
         List<Task> Tasks = new List<Task>();
-
+        List<Task> tempList = new List<Task>();
+        List<Task> fullList = new List<Task>();
         public void AppendTask(Task task)
         {
             Tasks.Add(task);
@@ -57,6 +58,64 @@ namespace TaskList
                     break;
                 }
             }
+        }
+        public void sortList()
+        {
+            int input;
+            Console.WriteLine("How do you want to sort the list?");
+            Console.WriteLine("1.) Name");
+            Console.WriteLine("2.) Priority");
+            Console.WriteLine("3.) Due Date");
+            input = int.Parse(Console.ReadLine());
+
+            switch (input)
+            {
+                case 1:
+                    tempList = Tasks.OrderBy(Task => Task._taskName).ToList();
+                    Tasks = tempList;
+                    break;
+                case 2:
+                    tempList = Tasks.OrderBy(Task => Task._priority).ToList();
+                    Tasks = tempList;
+                    break;
+                case 3:
+                    tempList = Tasks.OrderBy(Task => Task._date).ToList();
+                    Tasks = tempList;
+                    break;
+                default:
+                    Console.WriteLine("Invalid input!");
+                    break;
+            }
+        }
+
+        public void filterList()
+        {
+            int input;
+            Console.WriteLine("How do you want to filter the list?");
+            Console.WriteLine("1.) Show expired Tasks");
+            Console.WriteLine("2.) Show pending Tasks");
+            Console.WriteLine("3.) Show all Tasks");
+            input = int.Parse(Console.ReadLine());
+            switch (input)
+            {
+                case 1:
+                    fullList = Tasks;
+                    tempList = Tasks.Where(Task => Task._date.CompareTo(DateTime.Now) <= 0).ToList();
+                    Tasks = tempList;
+                    break;
+                case 2:
+                    fullList = Tasks;
+                    tempList = Tasks.Where(Task => Task._date.CompareTo(DateTime.Now) >= 0).ToList();
+                    Tasks = tempList;
+                    break;
+                case 3:
+                    Tasks = fullList;
+                    break;
+                default:
+                    Console.WriteLine("Invalid input!");
+                    break;
+            }
+
         }
     }
 }
